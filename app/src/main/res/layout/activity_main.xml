@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/forest2"
+    android:background="@drawable/oceano1"
     tools:context=".MainActivity">
 
     <ImageButton
         android:id="@+id/imageButton"
-        android:layout_width="134dp"
-        android:layout_height="118dp"
-        android:background="#00FFFFFF"
+        android:layout_width="161dp"
+        android:layout_height="102dp"
+        android:background="@drawable/button"
         android:onClick="score"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -20,15 +20,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.284"
-        app:srcCompat="@drawable/cheshirecat" />
+         />
 
     <Button
         android:id="@+id/startbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
+        android:background="@drawable/start_button"
+        android:fontFamily="@font/almendra_sc"
         android:onClick="start"
         android:text="START"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -37,9 +41,11 @@
         android:id="@+id/ScoreView"
         android:layout_width="105dp"
         android:layout_height="32dp"
+        android:fontFamily="@font/almendra_sc"
         android:text="Score : 0"
         android:textColor="@android:color/background_light"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/startbtn"
         app:layout_constraintEnd_toStartOf="@+id/startbtn"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,21 +53,29 @@
 
     <TextView
         android:id="@+id/timeView"
-        android:layout_width="95dp"
-        android:layout_height="32dp"
+        android:layout_width="92dp"
+        android:layout_height="36dp"
+        android:fontFamily="@font/almendra_sc"
         android:text="Time: 10"
-        android:textColor="@android:color/background_light"
-        android:textSize="18sp"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/colorRed"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"/>
 
     <TextView
         android:id="@+id/lastScoreView"
         android:layout_width="122dp"
         android:layout_height="26dp"
+        android:fontFamily="@font/almendra_sc"
         android:text="Last Score: "
-        android:textColor="@android:color/background_light"
+        android:textColor="#000000"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/startbtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/startbtn"
@@ -69,12 +83,16 @@
 
     <TextView
         android:id="@+id/bestScoreView"
-        android:layout_width="117dp"
-        android:layout_height="37dp"
+        android:layout_width="192dp"
+        android:layout_height="42dp"
+        android:fontFamily="@font/almendra_sc"
         android:text="Best Score: "
-        android:textColor="@android:color/background_light"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="6dp"
-        tools:layout_editor_absoluteY="0dp" />
+        android:textColor="@color/colorDarkBlue"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

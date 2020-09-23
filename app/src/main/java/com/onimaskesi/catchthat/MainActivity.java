@@ -4,11 +4,15 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AlertDialogLayout;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.core.view.KeyEventDispatcher;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -18,6 +22,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Random;
+
+import static com.onimaskesi.catchthat.R.drawable.start_button;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     TextView lastScoreView;
     TextView bestScoreView;
     SharedPreferences sharedPreferences;
+    Dialog finish_popup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
 
         bestscore = sharedPreferences.getInt("best",0);
         bestScoreView.setText("Best Score: " + bestscore);
+
+        finish_popup = new Dialog(this);
 
     }
 
@@ -67,16 +76,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
 
-                AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
-                alertDialog.setTitle("GAME OVER");
-                alertDialog.setMessage("Your score is " + score);
-                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "AGAIN!",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        });
-                alertDialog.show();
+                TextView txtScore;
+                TextView txtClose;
+
+                finish_popup.setContentView(R.layout.finish_popup);
+                txtScore = finish_popup.findViewById(R.id.txtScore);
+                txtClose = finish_popup.findViewById(R.id.txtclose);
+                txtScore.setText(""+score);
+
+                txtClose.setOnClickListener(new View.OnClickListener(){
+
+                    @Override
+                    public void onClick(View v) {
+                        finish_popup.dismiss();
+                    }
+                });
+                finish_popup.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                finish_popup.show();
+
                 if(bestscore < score){
                     bestscore = score;
                     bestScoreView.setText("Best Score: " + bestscore);
